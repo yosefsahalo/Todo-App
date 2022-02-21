@@ -3,5 +3,5 @@ export interface ITodo{
     description: string;
     isCompleted: boolean;
     isArchived: boolean;
-    endData: Date | number;
+    endData: Date | number | string;
 }
