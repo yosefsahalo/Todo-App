@@ -28,4 +28,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
+
+  public onClickTodo(todo:ITodo, index: number){
+    this.todoService.setSingleTodo(todo);
+    this.todos[index].selected = true;
+  }
 }

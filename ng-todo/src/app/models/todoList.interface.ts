@@ -4,4 +4,5 @@ export interface ITodo{
     isCompleted: boolean;
     isArchived: boolean;
     endData: Date | number | string;
+    selected: boolean;
 }
