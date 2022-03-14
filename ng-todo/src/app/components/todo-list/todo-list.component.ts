@@ -31,6 +31,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   public onClickTodo(todo:ITodo, index: number){
     this.todoService.setSingleTodo(todo);
+    this.todos.forEach(todo => {
+      if (todo.selected) {
+        todo.selected = false;
+      }
+    });
     this.todos[index].selected = true;
   }
 }

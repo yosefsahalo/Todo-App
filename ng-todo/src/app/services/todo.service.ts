@@ -9,22 +9,25 @@ export class TodoService {
 
   private mock: ITodo[] = [
     {
+      id: 1,
       title: 'Dolphin, striped',
       description: 'Stenella coeruleoalba',
-      isCompleted: true,
-      isArchived: true,
+      isCompleted: false,
+      isArchived: false,
       endData: '12/20/2021',
       selected: true
     },
     {
+      id: 2,
       title: 'Sheathbill, snowy',
       description: 'Chionis alba',
-      isCompleted: true,
-      isArchived: true,
+      isCompleted: false,
+      isArchived: false,
       endData: '10/30/2021',
       selected: false
     },
     {
+      id: 3,
       title: 'Jaeger, long-tailed',
       description: 'Stercorarius longicausus',
       isCompleted: false,
@@ -33,17 +36,19 @@ export class TodoService {
       selected: false
     },
     {
+      id: 4,
       title: 'Lesser masked weaver',
       description: 'Ploceus intermedius',
-      isCompleted: true,
-      isArchived: true,
+      isCompleted: false,
+      isArchived: false,
       endData: '10/21/2021',
       selected: false
     },
     {
+      id: 5,
       title: 'Wallaby, tammar',
       description: 'Macropus eugenii',
-      isCompleted: true,
+      isCompleted: false,
       isArchived: false,
       endData: '9/29/2021',
       selected: false

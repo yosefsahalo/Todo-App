@@ -1,10 +1,11 @@
-<mat-card class="" *ngIf="todos">
+<mat-card class="" *ngIf="!todos.isArchived">
     <mat-card-header>
+    <!-- <mat-card-header *ngIf="!todos.isArchived"> -->
       <mat-card-title>{{todos.title}}</mat-card-title>
       <mat-card-subtitle>{{todos.description}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button>Complete</button>
-      <button mat-button>Archive</button>
+      <button mat-raised-button color="primary" (click)="ocClickCompleted(todos)">Complete</button>
+      <button mat-raised-button color="warn" (click)="onClickArchived()">Archive</button>
     </mat-card-actions>
   </mat-card>
