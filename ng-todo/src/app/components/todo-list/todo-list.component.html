@@ -1,5 +1,5 @@
 <div class="todoList">
-  <div class="todoWrap" *ngFor="let item of todos; let i = index;">
+  <div class="todoWrap" *ngFor="let item of todo; let i = index;">
     <mat-card
     (click)="onClickTodo(item, i)"
     [ngClass]="{'selected': item.selected, 'completed' : item.isCompleted}"

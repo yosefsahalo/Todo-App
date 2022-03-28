@@ -1,6 +1,5 @@
-<mat-card class="" *ngIf="!todos.isArchived">
+<mat-card class="" *ngIf="todos && !todos.isArchived">
     <mat-card-header>
-    <!-- <mat-card-header *ngIf="!todos.isArchived"> -->
       <mat-card-title>{{todos.title}}</mat-card-title>
       <mat-card-subtitle>{{todos.description}}</mat-card-subtitle>
     </mat-card-header>

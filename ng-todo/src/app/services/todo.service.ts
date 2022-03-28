@@ -7,57 +7,11 @@ import { ITodo } from '../models/todoList.interface';
 })
 export class TodoService {
 
-  private mock: ITodo[] = [
-    {
-      id: 1,
-      title: 'Dolphin, striped',
-      description: 'Stenella coeruleoalba',
-      isCompleted: false,
-      isArchived: false,
-      endData: '12/20/2021',
-      selected: true
-    },
-    {
-      id: 2,
-      title: 'Sheathbill, snowy',
-      description: 'Chionis alba',
-      isCompleted: false,
-      isArchived: false,
-      endData: '10/30/2021',
-      selected: false
-    },
-    {
-      id: 3,
-      title: 'Jaeger, long-tailed',
-      description: 'Stercorarius longicausus',
-      isCompleted: false,
-      isArchived: false,
-      endData: '8/11/2021',
-      selected: false
-    },
-    {
-      id: 4,
-      title: 'Lesser masked weaver',
-      description: 'Ploceus intermedius',
-      isCompleted: false,
-      isArchived: false,
-      endData: '10/21/2021',
-      selected: false
-    },
-    {
-      id: 5,
-      title: 'Wallaby, tammar',
-      description: 'Macropus eugenii',
-      isCompleted: false,
-      isArchived: false,
-      endData: '9/29/2021',
-      selected: false
-    },
-  ];
+  private todos:ITodo[] = []
 
-  private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(this.mock);
+  private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(this.todos);
 
-  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(this.mock[0]);
+  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(this.todos.length ? this.todos[0] : null);
 
   constructor() { }
 
@@ -71,5 +25,11 @@ export class TodoService {
   
   public setSingleTodo(todo: ITodo){
     return this._singleTodoSubject.next(todo);
+  }
+
+  public addNewTodo(newTodo: ITodo): void {
+    const exitingTodo:Array<ITodo> = this._todoSubject.value;
+    exitingTodo.push(newTodo);
+    this._todoSubject.next(exitingTodo);
   }
 }

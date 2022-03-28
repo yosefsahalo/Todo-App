@@ -1,9 +1,9 @@
 <div class="todoContainer">
     <div class="listContainer">
-      <app-todo-list></app-todo-list>
+      <app-todo-list [todo]="todo"></app-todo-list>
     </div>
     <div class="todoCard">
-      <app-todo></app-todo>
+      <app-todo [todos]="todos"></app-todo>
     </div>
     <button (click)="openDialog()" class="openNewAddBtn" mat-fab color="primary">add</button>
 </div>
