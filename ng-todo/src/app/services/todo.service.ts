@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, single } from 'rxjs';
 import { ITodo } from '../models/todoList.interface';
 
 @Injectable({
@@ -16,6 +16,14 @@ export class TodoService {
   constructor() { }
 
   public getTodo(): Observable<Array<ITodo>>{
+    if(!this._todoSubject.value.length){
+      const todoString = localStorage.getItem('todos');
+      if(todoString){
+        const existingTodo:Array<ITodo> = JSON.parse(todoString);
+        this._todoSubject.next(existingTodo);
+        this._singleTodoSubject.next(existingTodo[0]);
+      }
+    }
     return this._todoSubject.asObservable();
   }
 
@@ -31,5 +39,17 @@ export class TodoService {
     const exitingTodo:Array<ITodo> = this._todoSubject.value;
     exitingTodo.push(newTodo);
     this._todoSubject.next(exitingTodo);
+    localStorage.setItem('todos', JSON.stringify(exitingTodo));
+  }
+
+  public onTodoActions(todoId:string, action:string):void{
+    const exitingTodo:Array<ITodo> = this._todoSubject.value;
+
+    const todoIndex = exitingTodo.findIndex(
+      (singleTodo) => singleTodo.id = todoId
+    );
+    exitingTodo[todoIndex][action] = true;
+    this._todoSubject.next(exitingTodo);
+    localStorage.setItem('todos', JSON.stringify(exitingTodo));
   }
 }

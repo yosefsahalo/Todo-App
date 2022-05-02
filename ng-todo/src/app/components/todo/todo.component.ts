@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITodo } from 'src/app/models/todoList.interface';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,7 +9,7 @@ import { ITodo } from 'src/app/models/todoList.interface';
 })
 export class TodoComponent implements OnInit{
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   @Input() set todos(todos:ITodo){
     this._todo = todos;
@@ -23,10 +24,12 @@ export class TodoComponent implements OnInit{
   ngOnInit(): void {}
 
   public ocClickCompleted(todo:ITodo):void{
-    todo.isCompleted = true;
+    this.todos.isCompleted = true;
+    this.todoService.onTodoActions(todo.id, 'isCompeted');
   }
 
   public onClickArchived():void{
-    this.todos.isArchived = true; 
+    this.todos.isArchived = true;
+    this.todoService.onTodoActions(this.todos.id, 'isArchived');
   }
 }

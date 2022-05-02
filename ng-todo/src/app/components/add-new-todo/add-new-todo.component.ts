@@ -18,20 +18,21 @@ export class AddNewTodoComponent implements OnInit {
   }
 
   public onNgSubmit(): void {
-    const formValues = this.form.form.value;
-    const newTodo:ITodo = {
-      id: uuidv4(),
-      title: formValues.title,
-      description: formValues.description,
-      isCompleted: false,
-      isArchived: false,
-      endData: formValues.endData,
-      selected: false
+    if(this.form.valid){
+      const formValues = this.form.form.value;
+      const newTodo:ITodo = {
+        id: uuidv4(),
+        title: formValues.title,
+        description: formValues.description,
+        isCompleted: false,
+        isArchived: false,
+        endData: formValues.endData,
+        selected: false
+      }
+      console.log("ON Submit");
+      console.log(newTodo);
+      this.todoService.addNewTodo(newTodo);
+      this.dialog.closeAll();
     }
-    console.log("ON Submit");
-    console.log(newTodo);
-    this.todoService.addNewTodo(newTodo);
-    this.dialog.closeAll();
   }
-
 }
