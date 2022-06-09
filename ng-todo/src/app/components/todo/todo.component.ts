@@ -23,9 +23,14 @@ export class TodoComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  public ocClickCompleted(todo:ITodo):void{
+  public onClickCompleted(todo:ITodo):void{
     this.todos.isCompleted = true;
-    this.todoService.onTodoActions(todo.id, 'isCompeted');
+    this.todoService.onTodoActions(todo.id, 'isCompleted');
+  }
+  
+  public onUnClickCompleted(todo:ITodo):void{
+    this.todos.isCompleted = false;
+    this.todoService.onTodoActions(todo.id, 'isCompleted');
   }
 
   public onClickArchived():void{

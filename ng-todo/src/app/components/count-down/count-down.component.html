@@ -1,7 +1,8 @@
-<div class="count-down">
+<div class="count-down" *ngIf="seconds > 0">
     <h3>Time To Finish:</h3>
     <span>{{days}}</span> Days
     <span>{{hours}}</span> Hours
     <span>{{minutes}}</span> Minutes
     <span>{{seconds}}</span> Seconds
 </div>
+<h3 *ngIf="seconds < 0">Time Is Over</h3>
